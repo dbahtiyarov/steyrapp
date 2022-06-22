@@ -1,72 +1,87 @@
-import 'package:flutter/material.dart';
+import 'package:flutter/cupertino.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_core/firebase_core.dart';
 
-void main() {
-  runApp(const MyApp());
-}
+import 'package:myapp/RidePage.dart';
+import 'package:myapp/CommunityPage.dart';
+import 'package:myapp/StorePage.dart';
+import 'package:myapp/EventsPage.dart';
+import 'package:myapp/MyCarPage.dart';
+
+void main() => runApp(const MyApp());
 
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
 
-  // This widget is the root of your application.
+  static const String _title = 'Steyrbach App';
+
+  void steyrappFirstFirebraseInit() async {
+    WidgetsFlutterBinding.ensureInitialized();
+    await Firebase.initializeApp();
+  }
+
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(
-     
-        primarySwatch: Colors.blue,
-      ),
-      home: const MyHomePage(title: 'Flutter Demo Home Page'),
+    return const CupertinoApp(
+      title: _title,
+      //Load any Stateful widget as a homepage. We can allow user to change
+      //this later in settings
+      home: MyStatefulWidget(),
     );
   }
 }
 
-class MyHomePage extends StatefulWidget {
-  const MyHomePage({Key? key, required this.title}) : super(key: key);
-
-  final String title;
-
+class MyStatefulWidget extends StatefulWidget {
+  const MyStatefulWidget({Key? key}) : super(key: key);
+ 
   @override
-  State<MyHomePage> createState() => _MyHomePageState();
+  State<MyStatefulWidget> createState() => _MyStatefulWidgetState();
 }
 
-class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
-
-  void _incrementCounter() {
-    setState(() {
-      _counter++;
-    });
-  }
-
+class _MyStatefulWidgetState extends State<MyStatefulWidget> {
   @override
   Widget build(BuildContext context) {
-
-    return Scaffold(
-      appBar: AppBar(
-
-        title: Text(widget.title),
+    return CupertinoTabScaffold(
+      tabBar: CupertinoTabBar(
+        items: const <BottomNavigationBarItem>[
+          BottomNavigationBarItem(
+            icon: Icon(CupertinoIcons.location_solid),
+            label: 'Ride',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(CupertinoIcons.person_3_fill),
+            label: 'Community',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(CupertinoIcons.cart),
+            label: 'Store',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(CupertinoIcons.flag_circle_fill),
+            label: 'Events',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(CupertinoIcons.car_detailed),
+            label: 'My Car',
+          ),
+        ],
       ),
-      body: Center(
-
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            const Text(
-              'You have pushed the button this many times:',
-            ),
-            Text(
-              '$_counter',
-              style: Theme.of(context).textTheme.headline4,
-            ),
-          ],
-        ),
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
-        child: const Icon(Icons.add),
-      ), 
+      tabBuilder: (context, index) {
+        switch (index) {
+          case 0:
+            return const RidePage();
+          case 1:
+            return const CommunityPage();
+          case 2:
+            return const StorePage();
+          case 3:
+            return const EventsPage();
+          case 4:
+            return const MyCarPage();
+          default:
+            return const MyCarPage();
+        }
+      },
     );
   }
 }
