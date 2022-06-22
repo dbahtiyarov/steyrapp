@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:myapp/MyCarPage.dart';
+import 'package:steyrapp/MyCarPage.dart';
 
 class AppSettings extends StatelessWidget {
   const AppSettings({Key? key}) : super(key: key);

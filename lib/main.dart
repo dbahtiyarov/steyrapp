@@ -2,11 +2,11 @@ import 'package:flutter/cupertino.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_core/firebase_core.dart';
 
-import 'package:myapp/RidePage.dart';
-import 'package:myapp/CommunityPage.dart';
-import 'package:myapp/StorePage.dart';
-import 'package:myapp/EventsPage.dart';
-import 'package:myapp/MyCarPage.dart';
+import 'package:steyrapp/RidePage.dart';
+import 'package:steyrapp/CommunityPage.dart';
+import 'package:steyrapp/StorePage.dart';
+import 'package:steyrapp/EventsPage.dart';
+import 'package:steyrapp/MyCarPage.dart';
 
 void main() => runApp(const MyApp());
 
@@ -33,7 +33,7 @@ class MyApp extends StatelessWidget {
 
 class MyStatefulWidget extends StatefulWidget {
   const MyStatefulWidget({Key? key}) : super(key: key);
- 
+
   @override
   State<MyStatefulWidget> createState() => _MyStatefulWidgetState();
 }
