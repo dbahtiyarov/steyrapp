@@ -2,11 +2,11 @@ import 'package:flutter/cupertino.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_core/firebase_core.dart';
 
-import 'package:steyrapp/RidePage.dart';
-import 'package:steyrapp/CommunityPage.dart';
-import 'package:steyrapp/StorePage.dart';
-import 'package:steyrapp/EventsPage.dart';
-import 'package:steyrapp/MyCarPage.dart';
+import 'package:steyrapp/pages/RidePage.dart';
+import 'package:steyrapp/pages/CommunityPage.dart';
+import 'package:steyrapp/pages/StorePage.dart';
+import 'package:steyrapp/pages/EventsPage.dart';
+import 'package:steyrapp/pages/MyCarPage.dart';
 
 void main() => runApp(const MyApp());
 
