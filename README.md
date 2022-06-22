@@ -1,4 +1,4 @@
-# steyrapp
+## Steyrapp
 
 Cross-platform client application for Steyrbach users. 
 Planned to include internal e-commerce marketplace, 
